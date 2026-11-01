@@ -1,0 +1,78 @@
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;color:#eee;font-family:Georgia,'Times New Roman',serif;overflow:hidden}
+#app{position:relative;height:100dvh;max-width:900px;margin:auto;display:flex;flex-direction:column;background:#050505}
+#hud{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:10px 12px}
+#prog{display:flex;gap:5px}.pip{width:22px;height:6px;border-radius:3px;background:#333}.pip.on{background:#d4af37;box-shadow:0 0 8px #d4af37}.pip.cur{background:#fff}
+#snd{background:#0008;border:1px solid #d4af3788;color:#d4af37;border-radius:50%;width:36px;height:36px;font-size:16px}
+#stage{position:relative;flex:1;overflow:hidden;min-height:0}
+#bg{position:absolute;inset:0;background:linear-gradient(165deg,var(--c1,#222),#050505 85%);transition:background 1s}
+#bg:after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(#0000,#000a)}
+#props{position:absolute;inset:12% 0 auto;display:flex;justify-content:space-around;font-size:min(14vw,80px);opacity:.28;filter:grayscale(.3)}
+#lamp{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 70% 0,var(--ac,#d4af37)44,#0000 70%);animation:flick 5s infinite}
+@keyframes flick{50%{opacity:.75}}
+#door{position:absolute;left:40%;bottom:12%;width:17%;height:50%;background:linear-gradient(#3a2a14,#1a1208);border:3px solid #d4af37;border-radius:4px 4px 0 0;display:none;transition:opacity 1s}
+.intro #door{display:block}
+.ch{position:absolute;bottom:9%;height:62%;transition:left 3s linear,opacity .8s,transform .8s;z-index:3}
+.ch svg{height:100%;width:auto;filter:drop-shadow(0 0 14px #000)}
+#boss{right:6%;height:66%}#me{left:6%;height:62%}
+.hide{opacity:0;transform:translateX(40px)}#me.hide{transform:translateX(-40px)}
+.nod{animation:nod .5s}.shake{animation:shake .5s}.jump{animation:jump .6s}
+@keyframes nod{50%{transform:translateY(8px)}}@keyframes shake{25%{transform:translateX(-12px)}75%{transform:translateX(12px)}}
+@keyframes jump{40%{transform:translateY(-20px) scale(1.04)}}
+.walk svg{animation:bob .45s infinite}@keyframes bob{50%{transform:translateY(-6px)}}
+.stand svg{transform-origin:bottom;animation:rise 1.2s forwards}@keyframes rise{to{transform:scale(1.12)}}
+#desk{position:absolute;left:0;right:0;bottom:0;height:12%;z-index:4;background:linear-gradient(#2b1d0e,#0c0804);border-top:3px solid #d4af37;box-shadow:0 -8px 30px #000}
+.bar{position:absolute;left:0;right:0;height:0;background:#000;z-index:9;transition:height 1s}.t{top:0}.b{bottom:0}
+.intro .bar{height:7%}
+#ui{padding:12px 14px 30px;background:linear-gradient(#0a0a0a,#000);border-top:2px solid #d4af37;min-height:36dvh;cursor:pointer}
+#name{color:#d4af37;letter-spacing:2px;font-size:13px;text-transform:uppercase;margin-bottom:6px}
+#txt{font-size:clamp(16px,4.4vw,21px);line-height:1.45;min-height:3em}
+#ans{display:flex;flex-direction:column;gap:9px;margin-top:10px}
+#ans button{background:linear-gradient(#1a1a1a,#0b0b0b);color:#f1e7c8;border:1px solid #d4af37;border-radius:10px;padding:13px;font:inherit;font-size:clamp(14px,3.8vw,17px);text-align:left;cursor:pointer;animation:up .4s backwards}
+#ans button:nth-child(2){animation-delay:.1s}#ans button:nth-child(3){animation-delay:.2s}
+#ans button:active,#ans button:hover{background:#d4af37;color:#000}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+#fade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .7s;z-index:30}
+#fade.on{opacity:1}
+#screen{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle,#2a2208,#000 70%);gap:18px}
+#screen.show{display:flex;animation:up .8s}
+#screen h1{font-size:clamp(28px,8vw,56px);letter-spacing:4px;background:linear-gradient(90deg,#8a8a8a,#fff,#d4af37,#fff,#8a8a8a);background-size:200%;-webkit-background-clip:text;color:transparent;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:200%}}
+#screen h1.red{background:none;color:#e0453a;border:4px solid #e0453a;padding:6px 18px;transform:rotate(-5deg)}
+#screen p{max-width:34em;color:#ccc;line-height:1.5}
+#screen button{background:#d4af37;color:#000;border:0;border-radius:10px;padding:14px 28px;font:inherit;font-weight:bold;letter-spacing:2px;cursor:pointer}
+footer{position:absolute;bottom:0;left:0;right:0;z-index:50;text-align:center;font-size:11px;padding:6px;color:#777;pointer-events:none}
+footer a{color:#a8903c;text-decoration:none;pointer-events:auto}footer a:hover{color:#d4af37}
+
+/* ===== noir neon casino lounge ===== */
+#bg{background:linear-gradient(180deg,var(--c1,#2a1060) 0%,#7a1a6a 45%,#ff3d5a 82%,#12040c 100%)}
+#bg:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='%230b0620'%3E%3Crect x='8' y='110' width='40' height='90'/%3E%3Crect x='58' y='80' width='30' height='120'/%3E%3Crect x='300' y='95' width='45' height='105'/%3E%3Crect x='350' y='125' width='40' height='75'/%3E%3Crect x='110' y='125' width='35' height='75'/%3E%3C/g%3E%3Cpath fill='%23ff3d5a' d='M170 200V92h12V62h8V32h4V8h2v24h4v30h8v30h12v108z'/%3E%3C/svg%3E") bottom/cover no-repeat;opacity:.85}
+#lamp{background:linear-gradient(115deg,#0000 35%,#7fa8ff2e 50%,#0000 62%),radial-gradient(ellipse 60% 70% at 70% 0,var(--ac,#d4af37)33,#0000 70%)}
+#props:before{content:"♠  ♥  ♦  ♣  ♠  ♥  ♦  ♣";position:absolute;top:-9%;left:0;right:0;text-align:center;font-size:14px;letter-spacing:.5em;color:#d4af3799}
+#stage{box-shadow:inset 0 0 0 2px #d4af3733,inset 0 0 60px #000}
+.ch svg{filter:drop-shadow(-2px 0 1px #ff3d6e) drop-shadow(0 0 14px #000)}
+#desk{background:linear-gradient(#7a1030,#2a0612)}
+#desk:after{content:"🪙  ♠  🎲  ♥  🪙  ♦  🃏";display:block;text-align:center;font-size:13px;opacity:.7;padding-top:6px;letter-spacing:6px}
+#ui{border-top:2px solid #ff3d6e;box-shadow:0 -6px 24px #ff3d6e33}#name{color:#ff6b8a}
+
+/* ===== v3: seated side-view interview, speech bubble on top, answers below ===== */
+#ui{position:absolute;inset:0;z-index:15;padding:0;min-height:0;background:none;border:0;box-shadow:none;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between}
+#bubble{position:relative;pointer-events:auto;margin:52px 12px 0;padding:12px 16px 14px;background:#0b0f18f2;border:3px solid #ffffff38;border-radius:22px;text-align:center;box-shadow:0 8px 30px #000a;transition:opacity .3s}
+#bubble:after{content:"";position:absolute;bottom:-15px;width:26px;height:26px;background:inherit;border-right:3px solid #ffffff38;border-bottom:3px solid #ffffff38;transform:rotate(45deg)}
+#bubble.r:after{right:24%}#bubble.l:after{left:24%}
+#name{font-size:11px;margin-bottom:4px;letter-spacing:2px}#txt{font-size:clamp(16px,4.6vw,21px);font-weight:bold;min-height:2.6em}
+#ans{pointer-events:auto;padding:0 12px 34px;margin-top:0}
+#ans button{display:flex;gap:14px;align-items:center;background:#241c20e6;border:2px solid #ffffff2e;border-radius:18px;padding:14px 16px;color:#fff;font-weight:bold}
+#ans button b{color:#ffd23f;font-size:1.1em}
+#ans button:hover,#ans button:active{background:#ffd23f;color:#000}#ans button:hover b,#ans button:active b{color:#000}
+#me,#boss{width:52%;height:38%;bottom:29%}#me{left:0}#boss{right:0}
+.ch img{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(180deg,transparent,#000 14%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(180deg,transparent,#000 14%);mask-composite:intersect}
+.walk img{animation:bob2 .45s infinite}@keyframes bob2{50%{translate:0 -6px}}
+.stand img{animation:rise2 1.2s forwards}@keyframes rise2{to{scale:1.1}}
+#desk{height:32%}
+#desk:after{content:"🪙 ♠ 📁 ♥ 🔔 ♦ 🃏";font-size:20px;padding-top:10px}
+#screen.title{justify-content:flex-start;padding-top:44dvh;background:#050505}
+#screen.title:before{content:"";position:absolute;inset:0 0 auto;height:44dvh;background:url(img/banner.webp) center/cover;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+
+/* ===== v4: drawn side-view characters ===== */
+.ch .fl{width:100%;height:100%}.ch svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 16px #000)}
